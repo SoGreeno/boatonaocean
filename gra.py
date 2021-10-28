@@ -2,18 +2,37 @@
 # -*- coding: utf-8 -*-
 import pygame
 import time
-okno = pygame.display.set_mode([100,100])
+screen = pygame.display.set_mode([100,100])
 pygame.display.set_caption("boatonaocean")
 ocean = pygame.image.load("ocean.png")
-player = pygame.image.load("lodz.png")
+playerImg = pygame.image.load("lodz.png")
+
+def player(x,y):
+	screen.blit(playerImg, (x, y))
+	
+#loop
+running = True
+while running:
 
 #wypełnij ocean
-okno.blit(ocean, [0,0])
-okno.blit(ocean, [50,0])
-okno.blit(ocean, [0,50])
-okno.blit(ocean, [50,50])
-okno.blit(player, [25,25])
+	screen.blit(ocean, [0,0])
+	screen.blit(ocean, [50,0])
+	screen.blit(ocean, [0,50])
+	screen.blit(ocean, [50,50])
+	
+#zmienne
+	playerX = 0
+	playerY = 0
+	x = 0
+	y= 0
+	
 
-while True:
+
+	for event in pygame.event.get():
+		if event.type == pygame.QUIT:
+			running = False
+	
+	player(playerX,playerY)
+	playerX += 0.1
 	pygame.display.flip()
 
